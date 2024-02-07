@@ -1,8 +1,69 @@
 import Logo from '../img/logo.png'
 import Google from '../img/google.png'
 import Apple from '../img/apple.png'
+import { useState } from 'react'
+import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 export const SignUp = () => {
+    const [name, setName] = useState(null);
+    const [email, setEmail] = useState(null);
+    const [pass, setPass] = useState(null);
+
+    const defaultUser = {
+        name: 'Ramazan',
+        email: 'ramazan@gmail.com',
+        pass: 'ramazan2005'
+    }
+
+    const notifyWarning = () => toast.warn('Please enter your email address and password', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+    });
+    const notifySuccess = () => toast.success('Registration is successful', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+    });
+    const notifyDanger = () => toast.error('Email or password is incorrect', {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+    });
+
+    const formSubmit = e => {
+        e.preventDefault();
+        if (!name && !email && !pass) {
+            notifyWarning();
+        } else {
+            if (defaultUser.name === name && defaultUser.email === email && defaultUser.pass === pass) {
+                notifySuccess();
+            } else {
+                notifyDanger();
+            }
+        }
+    }
+
+
+
     return (
         <div className="register rounded-4 d-flex">
             <div className="left rounded-4 mx-2 my-2">
@@ -26,7 +87,7 @@ export const SignUp = () => {
             </div>
             <div className="right">
                 <div className="container">
-                    <div className="heading mt-5 mx-4">
+                    <div className="heading mt-3 mx-4">
                         <h2 className='text-light fw-bold'>Get Started Now</h2>
                         <span className='text-light opacity-75'>Enter your credentials to access your account</span>
                     </div>
@@ -41,24 +102,32 @@ export const SignUp = () => {
                         </button>
                     </div>
                     <div className="line text-light d-flex align-items-center gap-4 mx-4 opacity-75">
-                    <span>_________________</span>
+                        <span>_________________</span>
                         <p className='mt-4'>or</p>
                         <span>__________________</span>
                     </div>
-                    <form className='mt-4 mx-4'>
+                    <form onSubmit={formSubmit} className='mt- mx-4'>
+                        <div className="mb-3">
+                            <label className="form-label text-light opacity-75">Name</label>
+                            <input type="text" className="form-control" onChange={e => { setName(e.target.value) }} />
+                        </div>
                         <div className="mb-3">
                             <label className="form-label text-light opacity-75">Email address</label>
-                            <input type="email" className="form-control" />
+                            <input type="email" className="form-control" onChange={e => { setEmail(e.target.value) }} />
                         </div>
                         <div className="mb-3">
                             <label className="form-label text-light opacity-75">Password</label>
-                            <input type="password" className="form-control" />
+                            <div className='input-group'>
+                                <input type="text" className="form-control" onChange={e => { setPass(e.target.value) }} />
+                                <button className="btn text-light border-secondary" type="button"><i className="fa-regular fa-eye-slash"></i></button>
+                            </div>
                         </div>
                         <div className="mb-3 form-check d-flex align-items-center gap-2">
                             <input type="checkbox" className="form-check-input" />
                             <label className="form-check-label text-light">I agree to the <a href="/">Terms & Privacy</a></label>
                         </div>
-                        <button type="submit" className="btn w-100 fw-medium mt-2 text-light">Register</button>
+                        <button type="submit" className="buttons btn w-100 fw-medium mt-2 text-light">Register</button>
+                        <ToastContainer />
                     </form>
                     <div className='footer mt-4  d-flex align-items-center justify-content-center'>
                         <span className='text-light d-flex gap-1 opacity-75'>Already a member?<a href="/">Login</a></span>

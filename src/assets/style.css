@@ -91,13 +91,13 @@ body {
     letter-spacing: .5px;
 }
 
-.register .right form button {
+.register .right form .buttons {
     background: rgb(74, 71, 215);
     background: linear-gradient(90deg, rgba(74, 71, 215, 1) 13%, rgba(118, 50, 204, 1) 65%);
     transition: .5s;
 }
 
-.register .right form button:hover {
+.register .right form .buttons:hover {
     border: 1px solid gray;
     background: rgb(44, 40, 46);
     background: linear-gradient(90deg, rgba(44, 40, 46, 1) 13%, rgba(44, 40, 46, 1) 65%);
