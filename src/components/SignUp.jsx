@@ -40,7 +40,12 @@ export const SignUp = () => {
                             <span className='opacity-75 fw-bold'>Log in with Apple</span>
                         </button>
                     </div>
-                    <form className='mt-5 mx-4'>
+                    <div className="line text-light d-flex align-items-center gap-4 mx-4 opacity-75">
+                    <span>_________________</span>
+                        <p className='mt-4'>or</p>
+                        <span>__________________</span>
+                    </div>
+                    <form className='mt-4 mx-4'>
                         <div className="mb-3">
                             <label className="form-label text-light opacity-75">Email address</label>
                             <input type="email" className="form-control" />
@@ -53,7 +58,7 @@ export const SignUp = () => {
                             <input type="checkbox" className="form-check-input" />
                             <label className="form-check-label text-light">I agree to the <a href="/">Terms & Privacy</a></label>
                         </div>
-                        <button type="submit" className="btn btn-primary w-100 fw-medium mt-2">Register</button>
+                        <button type="submit" className="btn w-100 fw-medium mt-2 text-light">Register</button>
                     </form>
                     <div className='footer mt-4  d-flex align-items-center justify-content-center'>
                         <span className='text-light d-flex gap-1 opacity-75'>Already a member?<a href="/">Login</a></span>
