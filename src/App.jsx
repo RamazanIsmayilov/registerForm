@@ -1,9 +1,18 @@
 import React from 'react'
-import { SignUp } from './components/SignUp'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import SignUp from './pages/SignUp'
+import Login from './pages/Login'
 
-export const App = () => {
+const App = () => {
   return (
-    <SignUp />
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<SignUp />}></Route>
+        <Route path='/login' element={<Login />}></Route>
+        <Route></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
+export default App
